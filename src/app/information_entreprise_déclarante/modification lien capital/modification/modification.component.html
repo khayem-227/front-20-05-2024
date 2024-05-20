@@ -1,0 +1,86 @@
+
+
+<!-- component -->
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+    <form [formGroup]="form">
+      <div class="container max-w-screen-lg mx-auto">
+        <div>
+          <h2 class="font-semibold text-xl text-gray-700">Page de description </h2>
+          <p class="text-gray-500 mb-6"></p>
+    
+          <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+             
+              <div class="text-gray-600">
+                <p class="font-medium text-lg"></p>
+                <p></p>
+              </div>
+             
+              <div class="lg:col-span-3">
+  
+                  
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                 
+                    <div class="md:col-span-5  text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+                        <div class="p-6">
+                          <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                            Affirmation
+                          </h5>
+                          <p class="text-gray-500 mb-6">
+                            Cet élément représente les modifications relatives aux liens en capital de l’entreprise déclarante avec des entreprises liées
+intervenues au cours de l’exercice. 
+                        </div>
+                        <div class="flex items-center ps-4 border bg-gray-50 border-gray-200 rounded dark:border-gray-700">
+                            <input  type="radio" value="O" formControlName="affirmation" class="w-4 h-4 text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Oui</label>
+                        </div>
+                        <div class="flex items-center ps-4 border bg-gray-50  border-gray-200 rounded dark:border-gray-700">
+                            <input checked  type="radio" value="N" formControlName="affirmation" class="w-4 h-4  text-blue-600 bg-gray-300 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Non</label>
+                        </div>
+                      </div>
+    
+                  
+                      <div class="md:col-span-5">
+                     
+                        <label >Description</label>
+                        <textarea type="text"  class="h-20 border mt-1 rounded px-4 w-full text bg-gray-50" formControlName="description" ></textarea>
+                        <span   *ngIf="form.hasError('required','description')&& form.controls['description'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                      </div>
+                
+    
+                
+    
+                 
+
+                 
+      
+                   
+                 
+          
+                  <div class="md:col-span-5 text-right">
+                    <div class="inline-flex items-end">
+                      <button [disabled]="form.invalid" [class.disabled]="form.invalid" (click)="submit()"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+                  
+                    </div>
+                 
+                  </div>
+           
+              
+            
+                </div>
+      
+              </div>
+                      
+          
+            </div>
+          </div>
+        </div>
+    
+      
+      </div>
+    </form>
+    </div>
+  
+  

@@ -1,0 +1,351 @@
+
+<!-- component -->
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+    <form [formGroup]="form">
+      <div class="container max-w-screen-lg mx-auto">
+        <div>
+          <h2 class="font-semibold text-xl text-gray-700">Les informations des opérations </h2>
+          <p class="text-gray-500 mb-6">Informations sur les prets accordés</p>
+    
+          <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+             
+              <div class="text-gray-600">
+                <p class="font-medium text-lg">Remplissez ce formulaire</p>
+                <p class="text-blue-600">Informations sur les prets accordés</p>
+              </div>
+             
+              <div class="lg:col-span-3">
+  
+                  
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                 
+                  <div class="md:col-span-5">
+                     
+                    <label >Matricule fiscale de l'entreprise</label>
+                    <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="matriculeFiscal" />
+                    <span   *ngIf="form.hasError('required','matriculeFiscal')&& form.controls['matriculeFiscal'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+    
+                  <div class="md:col-span-5">
+                    <label>Choisir un territoire</label>
+                    <select formControlName="etatTerritoire"
+                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                    <option value="">Choisir un territoire</option>
+                    <option *ngFor="let country of countriesList" [value]="country">{{ country }}</option>
+                  </select>
+                  </div>
+    
+                
+    
+                  <div class="md:col-span-2">
+                    <label >L'identifiant de l'entreprise</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="identifiant" />
+                    <span  *ngIf="form.hasError('required','identifiant')&& form.controls['identifiant'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+    
+                  <div class="md:col-span-3">
+                    <label > Raison Sociale </label>
+                    <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="raisonSociale" />
+                    <span  *ngIf="form.hasError('required','raisonSociale')&& form.controls['raisonSociale'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+                  <div class="md:col-span-3">
+                    <label >La nature de la relation entre les entreprises</label>
+                    <select formControlName="natureRelation"
+                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                <option value="">Choisir une nature de relation</option>
+                <option value="1">Propriétaires</option>
+                <option value="2">Copropriétaires</option>
+                <option value="3">Locataires</option>
+                <option value="4">Concessionnaires</option>
+               
+              </select>
+                  </div>  
+                  <div class="md:col-span-2">
+                    <label >Autre nature de relation</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="autreNatureRelation" />
+                    <span *ngIf="form.hasError('required','autreNatureRelation')&& form.controls['autreNatureRelation'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+                  <div class="md:col-span-3">
+                    <label >La qualité de l'entreprise</label>
+                    <select fromControlName="qualite"
+                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                <option value="">Choisir une qualité d'entreprise</option>
+                <option value="1">Entité mère ultime</option>
+                <option value="2">Entité mère non ultime</option>
+                <option value="3">Entreprise holding</option>
+                <option value="4">Entreprise filiale</option>
+                <option value="5">Établissement stable</option>
+                <option>autre qualité</option>
+              </select>
+                  </div>               
+                  <div class="md:col-span-2">
+                    <label >Autre qualité</label>
+                    <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  formControlName="autreQualite"/>
+                    <span  *ngIf="form.hasError('required','autreQualite')&& form.controls['autreQualite'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+
+                  <div class="md:col-span-3">
+                    <label >La valeur du solde d'ouverture</label>
+                    <input type="number" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="soldeOuverture" />
+                    <span  *ngIf="form.hasError('required','soldeOuverture')&& form.controls['soldeOuverture'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+                  <div class="md:col-span-2">
+                    <label > La valeur du solde de clôture</label>
+                    <input type="number" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="soldeCloture" />
+                    <span  *ngIf="form.hasError('required','soldeCloture')&& form.controls['soldeCloture'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+  
+                 
+                    <div class="md:col-span-5">
+                        <label >La devise </label>
+                        <select name="currency" id="currency" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="devise">
+                          <option value="">Choisir une devise</option>
+                            <option value="AED">UAE Dirham (AED)</option>
+                            <option value="AFN">Afghani (AFN)</option>
+                            <option value="ALL">Lek (ALL)</option>
+                            <option value="AMD">Armenian Dram (AMD)</option>
+                            <option value="ANG">Netherlands Antillean Guilder (ANG)</option>
+                            <option value="AOA">Kwanza (AOA)</option>
+                            <option value="ARS">Argentine Peso (ARS)</option>
+                            <option value="AUD">Australian Dollar (AUD)</option>
+                            <option value="AWG">Aruban Florin (AWG)</option>
+                            <option value="AZN">Azerbaijan Manat (AZN)</option>
+                            <option value="BAM">Convertible Mark (BAM)</option>
+                            <option value="BBD">Barbados Dollar (BBD)</option>
+                            <option value="BDT">Taka (BDT)</option>
+                            <option value="BGN">Bulgarian Lev (BGN)</option>
+                            <option value="BHD">Bahraini Dinar (BHD)</option>
+                            <option value="BIF">Burundi Franc (BIF)</option>
+                            <option value="BMD">Bermudian Dollar (BMD)</option>
+                            <option value="BND">Brunei Dollar (BND)</option>
+                            <option value="BOB">Boliviano (BOB)</option>
+                            <option value="BOV">Mvdol (BOV)</option>
+                            <option value="BRL">Brazilian Real (BRL)</option>
+                            <option value="BSD">Bahamian Dollar (BSD)</option>
+                            <option value="BTN">Ngultrum (BTN)</option>
+                            <option value="BWP">Pula (BWP)</option>
+                            <option value="BYN">Belarusian Ruble (BYN)</option>
+                            <option value="BYR">Belarussian Ruble (historical) (BYR)</option>
+                            <option value="BZD">Belize Dollar (BZD)</option>
+                            <option value="CAD">Canadian Dollar (CAD)</option>
+                            <option value="CDF">Congolese Franc (CDF)</option>
+                            <option value="CHE">WIR Euro (CHE)</option>
+                            <option value="CHF">Swiss Franc (CHF)</option>
+                            <option value="CHW">WIR Franc (CHW)</option>
+                            <option value="CLF">Unidad de Fomento (CLF)</option>
+                            <option value="CLP">Chilean Peso (CLP)</option>
+                            <option value="CNY">Yuan Renminbi (CNY)</option>
+                            <option value="COP">Colombian Peso (COP)</option>
+                            <option value="COU">Unidad de Valor Real (COU)</option>
+                            <option value="CRC">Costa Rican Colon (CRC)</option>
+                            <option value="CUC">Peso Convertible (CUC)</option>
+                            <option value="CUP">Cuban Peso (CUP)</option>
+                            <option value="CVE">Cabo Verde Escudo (CVE)</option>
+                            <option value="CZK">Czech Koruna (CZK)</option>
+                            <option value="DJF">Djibouti Franc (DJF)</option>
+                            <option value="DKK">Danish Krone (DKK)</option>
+                            <option value="DOP">Dominican Peso (DOP)</option>
+                            <option value="DZD">Algerian Dinar (DZD)</option>
+                            <option value="EGP">Egyptian Pound (EGP)</option>
+                            <option value="ERN">Nakfa (ERN)</option>
+                            <option value="ETB">Ethiopian Birr (ETB)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="FJD">Fiji Dollar (FJD)</option>
+                            <option value="FKP">Falkland Islands Pound (FKP)</option>
+                            <option value="GBP">Pound Sterling (GBP)</option>
+                            <option value="GEL">Lari (GEL)</option>
+                            <option value="GHS">Ghana Cedi (GHS)</option>
+                            <option value="GIP">Gibraltar Pound (GIP)</option>
+                            <option value="GMD">Dalasi (GMD)</option>
+                            <option value="GNF">Guinean Franc (GNF)</option>
+                            <option value="GTQ">Quetzal (GTQ)</option>
+                            <option value="GYD">Guyana Dollar (GYD)</option>
+                            <option value="HKD">Hong Kong Dollar (HKD)</option>
+                            <option value="HNL">Lempira (HNL)</option>
+                            <option value="HRK">Kuna (HRK)</option>
+                            <option value="HTG">Gourde (HTG)</option>
+                            <option value="HUF">Forint (HUF)</option>
+                            <option value="IDR">Rupiah (IDR)</option>
+                            <option value="ILS">New Israeli Sheqel (ILS)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                            <option value="IQD">Iraqi Dinar (IQD)</option>
+                            <option value="IRR">Iranian Rial (IRR)</option>
+                            <option value="ISK">Iceland Krona (ISK)</option>
+                            <option value="JMD">Jamaican Dollar (JMD)</option>
+                            <option value="JOD">Jordanian Dinar (JOD)</option>
+                            <option value="JPY">Yen (JPY)</option>
+                            <option value="KES">Kenyan Shilling (KES)</option>
+                            <option value="KGS">Som (KGS)</option>
+                            <option value="KHR">Riel (KHR)</option>
+                            <option value="KMF">Comorian Franc (KMF)</option>
+                            <option value="KPW">North Korean Won (KPW)</option>
+                            <option value="KRW">Won (KRW)</option>
+                            <option value="KWD">Kuwaiti Dinar (KWD)</option>
+                            <option value="KYD">Cayman Islands Dollar (KYD)</option>
+                            <option value="KZT">Tenge (KZT)</option>
+                            <option value="LAK">Lao Kip (LAK)</option>
+                            <option value="LBP">Lebanese Pound (LBP)</option>
+                            <option value="LKR">Sri Lanka Rupee (LKR)</option>
+                            <option value="LRD">Liberian Dollar (LRD)</option>
+                            <option value="LSL">Loti (LSL)</option>
+                            <option value="LYD">Libyan Dinar (LYD)</option>
+                            <option value="MAD">Moroccan Dirham (MAD)</option>
+                            <option value="MDL">Moldovan Leu (MDL)</option>
+                            <option value="MGA">Malagasy Ariary (MGA)</option>
+                            <option value="MKD">Denar (MKD)</option>
+                            <option value="MMK">Kyat (MMK)</option>
+                            <option value="MNT">Tugrik (MNT)</option>
+                            <option value="MOP">Pataca (MOP)</option>
+                            <option value="MRU">Ouguiya (MRU)</option>
+                            <option value="MUR">Mauritius Rupee (MUR)</option>
+                            <option value="MVR">Rufiyaa (MVR)</option>
+                            <option value="MWK">Malawi Kwacha (MWK)</option>
+                            <option value="MXN">Mexican Peso (MXN)</option>
+                            <option value="MYR">Malaysian Ringgit (MYR)</option>
+                            <option value="MZN">Mozambique Metical (MZN)</option>
+                            <option value="NAD">Namibia Dollar (NAD)</option>
+                            <option value="NGN">Naira (NGN)</option>
+                            <option value="NIO">Cordoba Oro (NIO)</option>
+                            <option value="NOK">Norwegian Krone (NOK)</option>
+                            <option value="NPR">Nepalese Rupee (NPR)</option>
+                            <option value="NZD">New Zealand Dollar (NZD)</option>
+                            <option value="OMR">Rial Omani (OMR)</option>
+                            <option value="PAB">Balboa (PAB)</option>
+                            <option value="PEN">Sol (PEN)</option>
+                            <option value="PGK">Kina (PGK)</option>
+                            <option value="PHP">Philippine Peso (PHP)</option>
+                            <option value="PKR">Pakistan Rupee (PKR)</option>
+                            <option value="PLN">Zloty (PLN)</option>
+                            <option value="PYG">Guarani (PYG)</option>
+                            <option value="QAR">Qatari Rial (QAR)</option>
+                            <option value="RON">Romanian Leu (RON)</option>
+                            <option value="RSD">Serbian Dinar (RSD)</option>
+                            <option value="RUB">Russian Ruble (RUB)</option>
+                            <option value="RWF">Rwanda Franc (RWF)</option>
+                            <option value="SAR">Saudi Riyal (SAR)</option>
+                            <option value="SBD">Solomon Islands Dollar (SBD)</option>
+                            <option value="SCR">Seychelles Rupee (SCR)</option>
+                            <option value="SDG">Sudanese Pound (SDG)</option>
+                            <option value="SEK">Swedish Krona (SEK)</option>
+                            <option value="SGD">Singapore Dollar (SGD)</option>
+                            <option value="SHP">Saint Helena Pound (SHP)</option>
+                            <option value="SLL">Leone (SLL)</option>
+                            <option value="SOS">Somali Shilling (SOS)</option>
+                            <option value="SRD">Surinam Dollar (SRD)</option>
+                            <option value="SSP">South Sudanese Pound (SSP)</option>
+                            <option value="STN">Dobra (STN)</option>
+                            <option value="SVC">El Salvador Colon (SVC)</option>
+                            <option value="SYP">Syrian Pound (SYP)</option>
+                            <option value="SZL">Lilangeni (SZL)</option>
+                            <option value="THB">Baht (THB)</option>
+                            <option value="TJS">Somoni (TJS)</option>
+                            <option value="TMT">Turkmenistan New Manat (TMT)</option>
+                            <option value="TND">Tunisian Dinar (TND)</option>
+                            <option value="TOP">Pa’anga (TOP)</option>
+                            <option value="TRY">Turkish Lira (TRY)</option>
+                            <option value="TTD">Trinidad and Tobago Dollar (TTD)</option>
+                            <option value="TWD">New Taiwan Dollar (TWD)</option>
+                            <option value="TZS">Tanzanian Shilling (TZS)</option>
+                            <option value="UAH">Hryvnia (UAH)</option>
+                            <option value="UGX">Uganda Shilling (UGX)</option>
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="USN">US Dollar (Next day) (USN)</option>
+                            <option value="UYU">Peso Uruguayo (UYU)</option>
+                            <option value="UYW">Unidad Previsional (UYW)</option>
+                            <option value="UZS">Uzbekistan Sum (UZS)</option>
+                            <option value="VEF">Bolivar (historical) (VEF)</option>
+                            <option value="VES">Bolívar Soberano (VES)</option>
+                            <option value="VND">Dong (VND)</option>
+                            <option value="VUV">Vatu (VUV)</option>
+                            <option value="WST">Tala (WST)</option>
+                            <option value="XAF">CFA Franc BEAC (XAF)</option>
+                            <option value="XAG">Silver (XAG)</option>
+                            <option value="XAU">Gold (XAU)</option>
+                            <option value="XBA">Bond Markets Unit European Composite Unit (EURCO) (XBA)</option>
+                            <option value="XBB">Bond Markets Unit European Monetary Unit (E.M.U.-6) (XBB)</option>
+                            <option value="XBC">Bond Markets Unit European Unit of Account 9 (E.U.A.-9) (XBC)</option>
+                            <option value="XBD">Bond Markets Unit European Unit of Account 17 (E.U.A.-17) (XBD)</option>
+                            <option value="XCD">East Caribbean Dollar (XCD)</option>
+                            <option value="XDR">SDR (Special Drawing Right) (XDR)</option>
+                            <option value="XFU">UIC-Franc (historical) (XFU)</option>
+                            <option value="XOF">CFA Franc BCEAO (XOF)</option>
+                            <option value="XPD">Palladium (XPD)</option>
+                            <option value="XPF">CFP Franc (XPF)</option>
+                            <option value="XPT">Platinum (XPT)</option>
+                            <option value="XSU">Sucre (XSU)</option>
+                            <option value="XUA">ADB Unit of Account (XUA)</option>
+                            <option value="XXX">No Currency (XXX)</option>
+                            <option value="YER">Yemeni Rial (YER)</option>
+                            <option value="ZAR">Rand (ZAR)</option>
+                            <option value="ZMW">Zambian Kwacha (ZMW)</option>
+                            <option value="ZWL">Zimbabwe Dollar (ZWL)</option>
+                        </select>
+                        
+                      
+                        
+                      </div>               
+                      <div class="md:col-span-2">
+                        <label >Mouvement augmentation</label>
+                        <input type="number"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  formControlName="mouvementsAugmentations"/>
+                        <span  *ngIf="form.hasError('required','mouvementsAugmentations')&& form.controls['mouvementsAugmentations'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                      </div>
+
+                      <div class="md:col-span-2">
+                        <label >Mouvement diminution</label>
+                        <input  type="number"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="mouvementsDiminutions" />
+                        <span *ngIf="form.hasError('required','mouvementsDiminutions')&& form.controls['mouvementsDiminutions'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                      </div>
+
+                      <div class="md:col-span-2">
+                        <label >Taux d'intérêts en %</label>
+                        <input  type="number"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="tauxInterets" />
+                        <span *ngIf="form.hasError('required','tauxInterets')&& form.controls['tauxInterets'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                      </div>
+
+
+                   
+
+                   
+                     
+  
+                   
+    
+                   
+    
+                 
+          
+                      <div class="md:col-span-4 text-center ">
+                        <div class="relative top-9  ml-72  ">
+                          <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" (click)="submit()" class="bg-blue-500  hover:bg-blue-700 text-white py-2 px-4 rounded">Valider</button>
+                         
+                        </div>
+      
+                        <div class="relative mr-96 text-center left-28 ">
+                          <button type="reset" [disabled]="form.invalid" [class.disabled]="form.invalid" class="bg-blue-500  hover:bg-blue-700 text-white  py-2 px-4 rounded">Faire une nouvelle déclaration</button>
+                         
+                        </div>
+                     
+                      </div>
+           
+              
+            
+                </div>
+      
+              </div>
+                      
+          
+            </div>
+          </div>
+        </div>
+    
+      
+      </div>
+    </form>
+    </div>
+  
+  
+

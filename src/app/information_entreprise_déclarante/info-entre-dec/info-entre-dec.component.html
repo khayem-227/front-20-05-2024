@@ -1,0 +1,112 @@
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="container max-w-screen-lg mx-auto">
+      <div>
+        <h2 class="font-semibold text-xl text-gray-700">Entrez les données de votre entreprise </h2>
+        <p class="text-gray-500 mb-6"></p>
+
+        <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+
+            <div class="text-gray-600">
+              <p class="font-medium text-lg">Description</p>
+              <p class="text-blue-600">Ce formulaire représente les informations sur l’entreprise déclarante.</p>
+            </div>
+
+            <div class="lg:col-span-3">
+              
+              <div class="md:col-span-5 text-gray-700 shadow-md bg-clip-border bg-gray-50 rounded-xl w-full">
+              
+
+              
+                
+              </div>
+              <br>
+              
+
+              
+
+              <label>Choisir les qualités de l'entreprise</label>
+              <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                  <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                      <div class="flex items-center ps-3">
+                          <input  type="checkbox" formControlName="emu" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Entité mère ultime</label>
+                      </div>
+                  </li>
+                  <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                      <div class="flex items-center ps-3">
+                          <input  type="checkbox" formControlName="emnu" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label  class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Entité mère non ultime</label>
+                      </div>
+                  </li>
+                  <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                      <div class="flex items-center ps-3">
+                          <input type="checkbox" formControlName="eh" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Entreprise holding</label>
+                      </div>
+                  </li>
+                  <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                      <div class="flex items-center ps-3">
+                          <input  type="checkbox" formControlName="ef" class="w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                          <label class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Entreprise filiale</label>
+                      </div>
+                  </li>
+
+                  <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <input  type="checkbox" formControlName="es" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Etablissement stable</label>
+                    </div>
+                </li>
+
+                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                  <div class="flex items-center ps-3">
+                      <input  type="checkbox" X class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Autre qualité</label>
+                  </div>
+              </li>
+              </ul>
+              
+
+             
+<br>
+
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                <div class="md:col-span-5">
+                  <label>Description de l'activité principale</label>
+                  <textarea type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="descriptionActivitesPrincipales"></textarea>
+                  <span *ngIf="form.hasError('required','descriptionActivitesPrincipales') && form.controls['descriptionActivitesPrincipales'].dirty" class="text-red-600"> Ce champs est obligatoire ! </span>
+                </div>
+
+                <div class="md:col-span-5">
+                  <label>Changement de l'activité au cours de l'exercice</label>
+                  <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                    <input type="radio" formControlName="affirmation" value="Oui" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Oui</label>
+                  </div>
+                  <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                    <input type="radio" value="Non" formControlName="affirmation" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-900">Non</label>
+                  </div>
+
+                  <div class="md:col-span-5">
+                    <textarea type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="description"></textarea>
+                    <span *ngIf="form.hasError('required','description') && form.controls['description'].dirty" class="text-red-600"> Ce champs est obligatoire ! </span>
+                  </div>
+                </div>
+
+                <div class="md:col-span-4">
+                  <div class="ml-48 text-center">
+                    <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Valider</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

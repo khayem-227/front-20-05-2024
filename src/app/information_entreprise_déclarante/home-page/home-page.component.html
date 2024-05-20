@@ -1,0 +1,125 @@
+
+<!-- component -->
+
+<div class="min-h-screen p-6 bg-gray-700 flex items-center justify-center">
+  <form [formGroup]="form" >
+    <div class="container max-w-screen-lg mx-auto">
+      <div>
+        <h2 class="font-semibold text-xl text-gray-100">Création de compte entreprise</h2>
+        
+  
+        <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+           
+            <div class="text-gray-600">
+              <p class="font-medium text-lg">Description</p>
+              <p class="text-blue-600">Ce formulaire vous permet d'entrer les données de votre entreprise</p>
+            </div>
+           
+            <div class="lg:col-span-3">
+
+                
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+               
+                
+  
+                <div class="md:col-span-5">
+                  <label>Choisir une nationalité</label>
+                  <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="nationalite">
+                  <option *ngFor="let country of countriesList" [value]="country" >{{ country }}</option>
+                </select>
+                </div>
+  
+              
+  
+                
+  
+                <div class="md:col-span-5">
+                  <label > Raison Sociale </label>
+                  <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="raisonSocial"  />
+                  <span  *ngIf="form.hasError('required','raisonSocial')&& form.controls['raisonSocial'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+
+               
+
+                     
+                  <div class="md:col-span-5">
+                    <label >forme juridique</label>
+                    <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  formControlName="formeJuridique" />
+                    <span  *ngIf="form.hasError('required','formeJuridique')&& form.controls['formeJuridique'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+                
+
+
+                  
+                  <div class="md:col-span-3">
+                    <label >Adresse siége sociale</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="adresseSiegeSocialEtablissementTunisie"  />
+                    <span *ngIf="form.hasError('required','adresseSiegeSocialEtablissementTunisie')&& form.controls['adresseSiegeSocialEtablissementTunisie'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+                  
+
+                  <div class="md:col-span-2">
+                    <label >Code postal</label>
+                    <input  type="number"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="codePostal"  />
+                    <span *ngIf="form.hasError('required','codePostal')&& form.controls['codePostal'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+
+                
+                  <div class="md:col-span-3">
+                    <label >Chiffre d'affaire annuelle</label>
+                    <input  type="number"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="chiffreAffaireAnnuel"  />
+                    <span *ngIf="form.hasError('required','chiffreAffaireAnnuel')&& form.controls['chiffreAffaireAnnuel'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+                 <div class="md:col-span-5">
+                  <label >Activité principale</label>
+                  <textarea class="h-20 border mt-1 rounded px-4 w-full bg-gray-50 text-center  " formControlName="activitePrincipale" ></textarea>
+                  <span *ngIf="form.hasError('required','activitePrincipale')&& form.controls['activitePrincipale'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+
+                <div class="md:col-span-5">
+                  <label >Activité secondaire</label>
+                  <textarea class="h-20 border mt-1 rounded px-4 w-full bg-gray-50 text-center " formControlName="activiteSecondaire"></textarea>
+                 
+                </div>
+  
+                 
+  
+               
+        
+                <div class="md:col-span-4  ">
+                  <div class=" ml-48 text-center">
+                    <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" (click)="submit()"  class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Valider</button>
+                   
+                  </div>
+
+                  
+               
+                </div>
+         
+            
+          
+              </div>
+    
+            </div>
+                    
+        
+          </div>
+        </div>
+      </div>
+  
+    
+    </div>
+  </form>
+  </div>
+
+
+
+
+
+
+

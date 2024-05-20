@@ -1,0 +1,164 @@
+
+<!-- component -->
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+  <form [formGroup]="form">
+    <div class="container max-w-screen-lg mx-auto">
+      <div>
+        <h2 class="font-semibold text-xl text-gray-700">Entrez les données relatives aux actifs incorporels </h2>
+        <p class="text-gray-500 mb-6"></p>
+  
+        <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+           
+            <div class="text-gray-600">
+              <p class="font-medium text-lg">Description</p>
+              <p class="text-blue-600"> Ce formulaire représente la liste des actifs incorporels détenus par le groupe d’entreprises et utilisés par l’entreprise déclarante. </p>
+            </div>
+           
+            <div class="lg:col-span-3">
+
+                
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+               
+                <div class="md:col-span-5">
+                   
+                  <label >Matricule fiscale de l'entreprise</label>
+                  <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="matriculeFiscal" />
+                  <span   *ngIf="form.hasError('required','matriculeFiscal')&& form.controls['matriculeFiscal'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+  
+                <div class="md:col-span-5">
+                  <label for="email">Choisir un territoire</label>
+                  <select formControlName="etatTerritoire"
+                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                  <option value="">Choisir un territoire</option>
+                  <option *ngFor="let country of countriesList" [value]="country">{{ country }}</option>
+                </select>
+                </div>
+  
+              
+  
+                <div class="md:col-span-2">
+                  <label >L'identifiant de l'entreprise</label>
+                  <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="identifiant" />
+                  <span  *ngIf="form.hasError('required','identifiant')&& form.controls['identifiant'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+  
+                <div class="md:col-span-3">
+                  <label for="address"> Raison Sociale </label>
+                  <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="raisonSociale" />
+                  <span  *ngIf="form.hasError('required','raisonSociale')&& form.controls['raisonSociale'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+
+
+                <div class="md:col-span-3">
+                  <label > Onéreux / Gratuit </label>
+                <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 bg-gray-50 ">
+                  <input type="radio" value="O"  formControlName="onreuxGratuit" class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label  class="w-full py-4 ms-2 bg-gray-50 text-sm font-medium text-gray-900 dark:text-gray-300">Onéreux</label>
+              </div>
+              <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 bg-gray-50 ">
+                  <input  type="radio" value="G" formControlName="onreuxGratuit" class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label  class="w-full py-4 ms-2 bg-gray-50 text-sm font-medium text-gray-900 dark:text-gray-300">Gratuit</label>
+              </div>
+              </div>
+              
+
+
+                <div class="md:col-span-3">
+                    <label >La qualité de l'entreprise</label>
+                    <select formControlName="qualite"
+                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                <option value="">Choisir une qualité</option>
+                <option value="1">Entité mère ultime</option>
+                <option value="2">Entité mère non ultime</option>
+                <option value="3">Entreprise holding</option>
+                <option value="4">Entreprise filiale</option>
+                <option value="5">Établissement stable</option>
+                <option value="6" >Autre qualité</option>
+              </select>
+                  </div>               
+                  <div class="md:col-span-2">
+                    <label >Autre qualité</label>
+                    <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  formControlName="autrequalité"/>
+                    <span  *ngIf="form.hasError('required','autrequalité')&& form.controls['autrequalité'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+                  <div class="md:col-span-3">
+                    <label >La nature de la relation entre les entreprises</label>
+                    <select 
+                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                <option value="">Choisir une nature de relation</option>
+                <option value="1 ">Propriétaires</option>
+                <option value="2">Copropriétaires</option>
+                <option value="3">Locataires</option>
+                <option value="4">Concessionnaires</option>
+                <option>Autre nature de relation</option>
+               
+              </select>
+                  </div>  
+                  <div class="md:col-span-2">
+                    <label >Autre nature de relation</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="autreNatureRelation" />
+                    <span *ngIf="form.hasError('required','autreNatureRelation')&& form.controls['autreNatureRelation'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+
+                  <div class="md:col-span-3">
+                    <label >La nature d'actif incorporel</label>
+                    <select   formControlName="natureActifIncorporel"
+                class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                <option value="">Choisir une nature d'actif incorporel</option>
+                <option  value="1">Investissements de recherche et de développement</option>
+                <option value="2">Concessions de marques</option>
+                <option value="3">Marques de fabrique</option>
+                <option value="4">Brevets/option>
+                <option value="5">Licences marques</option>
+                <option value="6">Licences et droits limités</option>
+                <option value="7">Noms commerciaux</option>
+                <option value="8">Procédés et valeurs similaires</option>
+                <option value="9">Logiciels</option>
+                <option value="10">Droit au bail</option>
+               
+                  <option>Autre nature d'actif corporel</option>
+
+
+              </select>
+                  </div>  
+  
+                  <div class="md:col-span-2">
+                    <label >Autre nature d'actif incorporel</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="autreNatureActifIncorporel" />
+                    <span *ngIf="form.hasError('required','autreNatureActifIncorporel')&& form.controls['autreNatureActifIncorporel'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+  
+               
+        
+                  <div class="md:col-span-4 text-center ">
+                    <div class="relative top-9  ml-48 left-36  ">
+                      <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" (click)="submit()" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Valider</button>
+                     
+                    </div>
+  
+                    <div class="relative mr-96 text-center  left-52 ">
+                      <button type="reset" [disabled]="form.invalid" [class.disabled]="form.invalid"  class="bg-blue-500  hover:bg-blue-700 text-white  py-2 px-4 rounded">Faire une nouvelle déclaration</button>
+                     
+                    </div>
+                 
+                  </div>
+         
+            
+          
+              </div>
+    
+            </div>
+        
+          </div>
+        </div>
+      </div>
+  
+    
+    </div>
+  </form>
+  </div>
+

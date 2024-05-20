@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Caio';
+    src: url('./Cairo-Regular.ttf') format('truetype'), /* adjust the path and format according to your font files */
+         url('./Cairo-Bold.ttf') format('truetype');
+    /* Add more src declarations for different formats if needed */
+    font-weight: normal;
+    font-style: normal;
+}

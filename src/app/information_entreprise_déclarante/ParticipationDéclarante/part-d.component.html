@@ -1,0 +1,127 @@
+
+<!-- component -->
+
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+  <form [formGroup]="form">
+    <div class="container max-w-screen-lg mx-auto">
+      <div>
+        <h2 class="font-semibold text-xl text-gray-700">Entrez les données relatives à la participation déclarante </h2>
+        <p class="text-gray-500 mb-6"></p>
+  
+        <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+           
+            <div class="text-gray-600">
+              <p class="font-medium text-lg">Description</p>
+              <p class="text-blue-600">Ce formulaire représente toute entreprise liée (son identifiant, sa raison sociale, sa qualité, le pourcentage de détention du
+                capital, le pourcentage de détention des droits de vote) dans laquelle participe l’entreprise déclarante. 
+                </p>
+            </div>
+           
+            <div class="lg:col-span-3">
+
+                
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+               
+                <div class="md:col-span-5">
+                   
+                  <label >Matricule fiscale de l'entreprise</label>
+                  <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="matriculeFiscal" />
+                  <span   *ngIf="form.hasError('required','matriculeFiscal')&& form.controls['matriculeFiscal'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+  
+                <div class="md:col-span-5">
+                  <label for="email">Choisir un territoire</label>
+                  <select formControlName="etatTerritoire"
+                  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+                  <option value="">Choisir un pays</option>
+                  <option *ngFor="let country of countriesList" [value]="country">{{ country }}</option>
+                </select>
+                </div>
+  
+              
+  
+                <div class="md:col-span-2">
+                  <label >L'identifiant de l'entreprise</label>
+                  <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="identifiant" />
+                  <span  *ngIf="form.hasError('required','identifiant')&& form.controls['identifiant'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+  
+                <div class="md:col-span-3">
+                  <label for="address"> Raison Sociale </label>
+                  <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="raisonSociale" />
+                  <span  *ngIf="form.hasError('required','raisonSociale')&& form.controls['raisonSociale'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+
+                <div class="md:col-span-3">
+                  <label >La qualité de l'entreprise</label>
+                  <select formControlName="qualité"
+              class="h-10 border mt-1 rounded px-4 w-full bg-gray-50">
+              <option value="">Choisir une qualité</option>
+              <option value="1">Entité mère ultime</option>
+              <option value="2">Entité mère non ultime</option>
+              <option value="3">Entreprise holding</option>
+              <option value="4">Entreprise filiale</option>
+              <option value="5">Établissement stable</option>
+              <option>Autre qualité</option>
+            </select>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label >Autre Qualité</label>
+                  <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="autreQualité" />
+                  <span *ngIf="form.hasError('required','autreQualité')&& form.controls['autreQualité'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                </div>
+                 
+                  <div class="md:col-span-2">
+                    <label >Détention de capital en %</label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="pourcentageDetentionCapital" />
+                    <span *ngIf="form.hasError('required','pourcentageDetentionCapital')&& form.controls['pourcentageDetentionCapital'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+
+
+                   
+  
+                  <div class="md:col-span-2">
+                    <label >Détention de vote en % </label>
+                    <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" formControlName="pourcentageDetentionDroitsVote" />
+                    <span *ngIf="form.hasError('required','pourcentageDetentionDroitsVote')&& form.controls['pourcentageDetentionDroitsVote'].dirty" class="text-red-600" > Ce champs est obligatoire ! </span>
+                  </div>
+  
+               
+        
+                
+                  <div class="md:col-span-4 text-center ">
+                    <div class="relative top-9  ml-48 left-28  ">
+                      <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" (click)="submit()" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Valider</button>
+                     
+                    </div>
+  
+                    <div class="relative mr-96 text-center  left-52 ">
+                      <button type="reset" [disabled]="form.invalid" [class.disabled]="form.invalid"  class="bg-blue-500  hover:bg-blue-700 text-white  py-2 px-4 rounded">Faire une nouvelle déclaration</button>
+                     
+                    </div>
+                 
+                  </div>
+               
+                
+
+               
+                
+         
+            
+          
+              </div>
+    
+            </div>
+                    
+        
+          </div>
+        </div>
+      </div>
+  
+    
+    </div>
+  </form>
+  </div>
+
